@@ -10,7 +10,7 @@ Of course, this depends on your use of SQL/SQLite features because ObjectBox is 
 
 Gradle setup
 ------------
-You should start with the basic ObjectBox set up (check the Github page and ).
+You should start with the basic ObjectBox set up: check its [GitHub page](https://github.com/objectbox/objectbox-java) and [intro](http://objectbox.io/documentation/introduction/).
 Additionally, you need to enable the `objectbox.daoCompat` flag via annotation processor options, and add DaoCompat as a dependency.
 In the end, your app build.gradle should have those additions: 
 
