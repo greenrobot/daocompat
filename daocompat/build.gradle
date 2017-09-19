@@ -1,0 +1,67 @@
+apply plugin: 'java'
+
+group = 'org.greenrobot'
+archivesBaseName = 'objectbox-daocompat'
+version= "1.0.0"
+//version= rootProject.version
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+dependencies {
+    compile "io.objectbox:objectbox-java:1.0.1"
+//    compile "io.objectbox:objectbox-java:${rootProject.version}"
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'org.greenrobot:essentials:3.0.0-RC1'
+
+    compileOnly 'io.reactivex:rxjava:1.1.8'
+    compileOnly 'junit:junit:4.12'
+}
+
+javadoc {
+    failOnError = false
+    title = " ObjectBox DaoCompat ${version} API"
+    options.bottom = 'Available under the Apache License, Version 2.0 - <i>Copyright &#169; 2017 <a href="http://greenrobot.org/">greenrobot.org</a>. All Rights Reserved.</i>'
+    doLast {
+        copy {
+            from '../javadoc-style'
+            into "build/docs/javadoc/"
+        }
+    }
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from 'build/docs/javadoc'
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+artifacts {
+    archives jar
+    archives javadocJar
+    archives sourcesJar
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.project {
+                name 'ObjectBox DaoCompat'
+                description 'ObjectBox compatibility layer for greenDAO'
+
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        distribution 'repo'
+                    }
+                }
+            }
+        }
+    }
+}
