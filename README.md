@@ -27,7 +27,7 @@ In the end, your app build.gradle should have those additions:
     }
     
     dependencies {
-        compile "io.objectbox:objectbox-daocompat:1.0.0"
+        compile "org.greenrobot:objectbox-daocompat:1.1.0"
     }
 
 First steps
@@ -43,6 +43,8 @@ For example, you can get DAOs using `session.getMyEntityDao()` and then call met
 
 Links
 -----
+[ObjectBox DaoCompat Documentation](http://greenrobot.org/greendao/documentation/objectbox-compat/)
+
 [greenDAO](http://greenrobot.org/greendao)
 
 [ObjectBox](http://objectbox.io/)
